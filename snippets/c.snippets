@@ -1,13 +1,11 @@
 # main()
 snippet main
-	int main(int argc, const char *argv[])
-	{
+	int main(int argc, const char *argv[]) {
 		${1}
 		return 0;
 	}
 snippet mainn
-	int main(void)
-	{
+	int main(void) {
 		${1}
 		return 0;
 	}
@@ -43,8 +41,7 @@ snippet once
 	#endif /* end of include guard: $1 */
 # If Condition
 snippet if
-	if (${1:/* condition */}) {
-		${2:/* code */}
+	if (${1}) {
 	}
 snippet el
 	else {
@@ -60,13 +57,11 @@ snippet do
 	} while (${1:/* condition */});
 # While Loop
 snippet wh
-	while (${1:/* condition */}) {
-		${2:/* code */}
+	while (${1}) {
 	}
 # For Loop
-snippet for
-	for (${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
-		${4:/* code */}
+snippet fo
+	for (${1}) {
 	}
 # Custom For Loop
 snippet forr
@@ -75,8 +70,7 @@ snippet forr
 	}
 # Function
 snippet fun
-	${1:void} ${2:function_name}(${3})
-	{
+	${1:void} ${2:function_name}(${3}) {
 		${4:/* code */}
 	}
 # Function Declaration
