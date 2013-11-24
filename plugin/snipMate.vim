@@ -149,9 +149,19 @@ endf
 fun! TriggerSnippet()
 	if exists('g:SuperTabMappingForward')
 		if g:SuperTabMappingForward == "<tab>"
-			let SuperTabKey = "\<c-n>"
+			let SuperTabPlug = maparg('<Plug>SuperTabForward', 'i')
+			if SuperTabPlug == ""
+				let SuperTabKey = "\<c-n>"
+			else
+				exec "let SuperTabKey = \"" . escape(SuperTabPlug, '<') . "\""
+			endif
 		elseif g:SuperTabMappingBackward == "<tab>"
-			let SuperTabKey = "\<c-p>"
+			let SuperTabPlug = maparg('<Plug>SuperTabBackward', 'i')
+			if SuperTabPlug == ""
+				let SuperTabKey = "\<c-p>"
+			else
+				exec "let SuperTabKey = \"" . escape(SuperTabPlug, '<') . "\""
+			endif
 		endif
 	endif
 
@@ -188,10 +198,20 @@ fun! BackwardsSnippet()
 	if exists('g:snipPos') | return snipMate#jumpTabStop(1) | endif
 
 	if exists('g:SuperTabMappingForward')
-		if g:SuperTabMappingBackward == "<s-tab>"
-			let SuperTabKey = "\<c-p>"
-		elseif g:SuperTabMappingForward == "<s-tab>"
-			let SuperTabKey = "\<c-n>"
+		if g:SuperTabMappingForward == "<s-tab>"
+			let SuperTabPlug = maparg('<Plug>SuperTabForward', 'i')
+			if SuperTabPlug == ""
+				let SuperTabKey = "\<c-n>"
+			else
+				exec "let SuperTabKey = \"" . escape(SuperTabPlug, '<') . "\""
+			endif
+		elseif g:SuperTabMappingBackward == "<s-tab>"
+			let SuperTabPlug = maparg('<Plug>SuperTabBackward', 'i')
+			if SuperTabPlug == ""
+				let SuperTabKey = "\<c-p>"
+			else
+				exec "let SuperTabKey = \"" . escape(SuperTabPlug, '<') . "\""
+			endif
 		endif
 	endif
 	if exists('SuperTabKey')
@@ -268,4 +288,3 @@ fun! ShowAvailableSnips()
 	call complete(col, matches)
 	return ''
 endf
-" vim:noet:sw=4:ts=4:ft=vim
