@@ -1,0 +1,2 @@
+snippet sc
+	fmt.Fscan(reader, ${1})
